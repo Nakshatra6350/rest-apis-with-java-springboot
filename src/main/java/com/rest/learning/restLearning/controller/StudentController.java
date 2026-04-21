@@ -5,6 +5,7 @@ import com.rest.learning.restLearning.dto.StudentDto;
 import com.rest.learning.restLearning.entity.Student;
 import com.rest.learning.restLearning.repository.StudentRepository;
 import com.rest.learning.restLearning.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -34,12 +35,12 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentDto> createStudent(@RequestBody AddStudentRequestDto reqBody){
+    public ResponseEntity<StudentDto> createStudent(@RequestBody @Valid AddStudentRequestDto reqBody){
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createStudent(reqBody));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDto> updateStudent(@RequestBody AddStudentRequestDto reqBody, @PathVariable long id){
+    public ResponseEntity<StudentDto> updateStudent(@RequestBody @Valid AddStudentRequestDto reqBody, @PathVariable long id){
         return ResponseEntity.ok(studentService.updateStudent(reqBody, id));
     }
 
@@ -50,7 +51,7 @@ public class StudentController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<StudentDto> updatePartialStudent(@RequestBody Map<String, Object> updates, @PathVariable long id){
+    public ResponseEntity<StudentDto> updatePartialStudent(@RequestBody @Valid Map<String, Object> updates, @PathVariable long id){
         return ResponseEntity.ok(studentService.updatePartialStudent(updates, id));
     }
 }
