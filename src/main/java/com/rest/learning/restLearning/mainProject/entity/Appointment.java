@@ -1,11 +1,17 @@
 package com.rest.learning.restLearning.mainProject.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import javax.print.Doc;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +23,64 @@ public class Appointment {
     @Column(length = 500)
     private String reason;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false) // patient is required to have an appointment
-    private Patient patient;
+    public Appointment(Long id, LocalDateTime appointmentTime, String reason, Patient patient, Doctor doctor) {
+        this.id = id;
+        this.appointmentTime = appointmentTime;
+        this.reason = reason;
+        this.patient = patient;
+        this.doctor = doctor;
+    }
+
+    public Appointment() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getAppointmentTime() {
+        return appointmentTime;
+    }
+
+    public void setAppointmentTime(LocalDateTime appointmentTime) {
+        this.appointmentTime = appointmentTime;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     @ManyToOne
-    @JoinColumn(nullable = false) // doctor is required to have an appointment
+    @ToString.Exclude
+    @JoinColumn(name = "patient_id", nullable = false) // patient is required and not nullable
+    private Patient patient;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JoinColumn(nullable = false)
     private Doctor doctor;
 }
