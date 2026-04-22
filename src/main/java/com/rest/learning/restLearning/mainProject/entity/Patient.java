@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(
@@ -43,9 +44,15 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
 
+    @OneToOne // owning side
+    @JoinColumn(name = "patient_insurance_id") // use to set column name if not given, hibernate by default chose insurance_id column to make
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointments;
 
 
-    public Patient(Long id, String name, LocalDate birthDate, String email, String gender, LocalDateTime createdAt, BloodGroupType bloodGroup) {
+    public Patient(Long id, String name, LocalDate birthDate, String email, String gender, LocalDateTime createdAt, BloodGroupType bloodGroup, Insurance insurance) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -53,9 +60,11 @@ public class Patient {
         this.gender = gender;
         this.createdAt = createdAt;
         this.bloodGroup = bloodGroup;
+        this.insurance = insurance;
     }
 
-    public Patient() {
+    public Patient(Insurance insurance) {
+        this.insurance = insurance;
     }
 
     public LocalDateTime getCreatedAt() {
