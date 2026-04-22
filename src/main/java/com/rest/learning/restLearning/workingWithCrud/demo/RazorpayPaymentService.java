@@ -1,4 +1,4 @@
-package com.rest.learning.restLearning.demo;
+package com.rest.learning.restLearning.workingWithCrud.demo;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;

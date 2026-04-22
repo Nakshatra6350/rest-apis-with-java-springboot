@@ -1,8 +1,7 @@
-package com.rest.learning.restLearning.service;
+package com.rest.learning.restLearning.workingWithCrud.service;
 
-import com.rest.learning.restLearning.dto.AddStudentRequestDto;
-import com.rest.learning.restLearning.dto.StudentDto;
-import org.jspecify.annotations.Nullable;
+import com.rest.learning.restLearning.workingWithCrud.dto.AddStudentRequestDto;
+import com.rest.learning.restLearning.workingWithCrud.dto.StudentDto;
 
 import java.util.List;
 import java.util.Map;

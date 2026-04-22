@@ -1,6 +1,6 @@
-package com.rest.learning.restLearning.repository;
+package com.rest.learning.restLearning.workingWithCrud.repository;
 
-import com.rest.learning.restLearning.entity.Student;
+import com.rest.learning.restLearning.workingWithCrud.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

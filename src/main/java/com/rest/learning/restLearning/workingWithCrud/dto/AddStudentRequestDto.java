@@ -1,4 +1,4 @@
-package com.rest.learning.restLearning.dto;
+package com.rest.learning.restLearning.workingWithCrud.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

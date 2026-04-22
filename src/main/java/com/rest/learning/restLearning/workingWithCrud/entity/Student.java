@@ -1,4 +1,4 @@
-package com.rest.learning.restLearning.entity;
+package com.rest.learning.restLearning.workingWithCrud.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

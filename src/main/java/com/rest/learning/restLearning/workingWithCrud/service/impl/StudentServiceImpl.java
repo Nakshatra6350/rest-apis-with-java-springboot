@@ -1,11 +1,10 @@
-package com.rest.learning.restLearning.service.impl;
+package com.rest.learning.restLearning.workingWithCrud.service.impl;
 
-import com.rest.learning.restLearning.dto.AddStudentRequestDto;
-import com.rest.learning.restLearning.dto.StudentDto;
-import com.rest.learning.restLearning.entity.Student;
-import com.rest.learning.restLearning.repository.StudentRepository;
-import com.rest.learning.restLearning.service.StudentService;
-import org.jspecify.annotations.Nullable;
+import com.rest.learning.restLearning.workingWithCrud.dto.AddStudentRequestDto;
+import com.rest.learning.restLearning.workingWithCrud.dto.StudentDto;
+import com.rest.learning.restLearning.workingWithCrud.entity.Student;
+import com.rest.learning.restLearning.workingWithCrud.repository.StudentRepository;
+import com.rest.learning.restLearning.workingWithCrud.service.StudentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

@@ -1,13 +1,10 @@
-package com.rest.learning.restLearning.controller;
+package com.rest.learning.restLearning.workingWithCrud.controller;
 
-import com.rest.learning.restLearning.dto.AddStudentRequestDto;
-import com.rest.learning.restLearning.dto.StudentDto;
-import com.rest.learning.restLearning.entity.Student;
-import com.rest.learning.restLearning.repository.StudentRepository;
-import com.rest.learning.restLearning.service.StudentService;
+import com.rest.learning.restLearning.workingWithCrud.dto.AddStudentRequestDto;
+import com.rest.learning.restLearning.workingWithCrud.dto.StudentDto;
+import com.rest.learning.restLearning.workingWithCrud.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
