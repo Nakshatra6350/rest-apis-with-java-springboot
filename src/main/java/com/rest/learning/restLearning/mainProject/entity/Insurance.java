@@ -1,12 +1,18 @@
 package com.rest.learning.restLearning.mainProject.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Insurance {
 
     @Id
@@ -21,22 +27,6 @@ public class Insurance {
 
     @Column(nullable = false)
     private LocalDate validUntil;
-
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @OneToOne(mappedBy = "insurance") //inverse side
-    private Patient patient;
-
-    public Insurance(Long id, String policyNumber, String provider, LocalDate validUntil, LocalDateTime createdAt, Patient patient) {
-        this.id = id;
-        this.policyNumber = policyNumber;
-        this.provider = provider;
-        this.validUntil = validUntil;
-        this.createdAt = createdAt;
-        this.patient = patient;
-    }
 
     public Insurance() {
     }
@@ -88,4 +78,21 @@ public class Insurance {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
+    public Insurance(Long id, String policyNumber, String provider, LocalDate validUntil, LocalDateTime createdAt, Patient patient) {
+        this.id = id;
+        this.policyNumber = policyNumber;
+        this.provider = provider;
+        this.validUntil = validUntil;
+        this.createdAt = createdAt;
+        this.patient = patient;
+    }
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @OneToOne(mappedBy = "insurance") // inverse side
+    private Patient patient;
+
 }

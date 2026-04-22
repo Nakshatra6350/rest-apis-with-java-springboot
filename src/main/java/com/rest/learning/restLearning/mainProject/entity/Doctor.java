@@ -1,7 +1,7 @@
 package com.rest.learning.restLearning.mainProject.entity;
 
 import jakarta.persistence.*;
-import org.apache.catalina.User;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,17 +9,91 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne
-//    @MapsId
-//    private User user;
+    @OneToOne
+    @MapsId
+    private User user;
 
     @Column(nullable = false, length = 100)
     private String name;
+
+    public Doctor(Long id, User user, String name, String specialization, String email, Set<Department> departments, List<Appointment> appointments) {
+        this.id = id;
+        this.user = user;
+        this.name = name;
+        this.specialization = specialization;
+        this.email = email;
+        this.departments = departments;
+        this.appointments = appointments;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<Department> departments) {
+        this.departments = departments;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public Doctor() {
+    }
 
     @Column(length = 100)
     private String specialization;
@@ -32,4 +106,5 @@ public class Doctor {
 
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointments = new ArrayList<>();
+
 }
